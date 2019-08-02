@@ -397,7 +397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000037815}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.69, y: -0.58, z: 0}
+  m_LocalPosition: {x: 0.54, y: -3.38, z: 0}
   m_LocalScale: {x: 7, y: 1.0635, z: 1.0635}
   m_Children: []
   m_Father: {fileID: 0}
@@ -504,7 +504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568298695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.15, y: 0.69, z: 0}
+  m_LocalPosition: {x: 0.08000004, y: -2.1100001, z: 0}
   m_LocalScale: {x: 4, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -777,7 +777,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904318744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.26, y: 0.34, z: 0}
+  m_LocalPosition: {x: -6.75, y: -0.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -795,25 +795,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c769eafae593b634090ae0f1a96a3b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  accelleration: 3
-  airaccelleration: 1.5
-  jump: 7
-  fallingMultiplayer: 2
-  runningMultiplier: 2
-  wallJumpMultiplier: 0.75
-  coyoteTime: 0.1
-  offset: 0.1
-  neutralWallMask:
-    serializedVersion: 2
-    m_Bits: 0
-  blackWallMask:
-    serializedVersion: 2
-    m_Bits: 0
-  whiteWallMask:
-    serializedVersion: 2
-    m_Bits: 0
-  jumpClip: {fileID: 0}
+  m_speed: 7.5
+  m_accelleration: 4.5
+  m_airaccelleration: 1.5
+  m_jump: 5
+  m_fallingMultiplayer: 3
+  m_runningMultiplier: 2
+  m_wallJumpMultiplier: 0.75
+  m_coyoteTime: 0.1
+  m_jumpDuration: 0.15
+  m_lateJumpDuration: 0.15
+  m_jumpingForce: 50
+  m_lateJumpForce: 20
+  m_gravitySpeedTrashhold: -0.05
+  m_friction: 1.75
+  m_offset: 0.1
+  m_jumpClip: {fileID: 0}
 --- !u!50 &1904318748
 Rigidbody2D:
   serializedVersion: 4
