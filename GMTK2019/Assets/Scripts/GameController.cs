@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public GameController instance;
+    [HideInInspector]
+    public static GameController instance;
 
     void Awake()
     {
@@ -21,5 +23,13 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Reset"))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
