@@ -102,6 +102,8 @@ public class PlayerController : MonoBehaviour
     private float m_gravitySpeedTrashhold = -1f;
     [SerializeField]
     private float m_friction = 2f;
+    [SerializeField]
+    private float m_walledDeceleration = 0.3f;
 
     [Space]
     [Header("Collision Settings")]
@@ -129,6 +131,7 @@ public class PlayerController : MonoBehaviour
     //private float m_accellerationMultiplier = 1; //Current acceleration multiplier dependant if the player is running or not
     //private float m_groundTime = 0; //time we were last grounded
 
+
     private bool m_canJump = true;
 
     private float m_jumpTime = 0f;
@@ -141,6 +144,8 @@ public class PlayerController : MonoBehaviour
     private bool m_isGrounded = false;
 
     private float m_slopeAngle = 0f;
+
+    private bool walled = false;
 
     public Collider2D collider
     {
@@ -201,7 +206,7 @@ public class PlayerController : MonoBehaviour
     {
         int wallDir = m_groundState.wallDirection(); //Direction of the wall: 1 is right and -1 is left
         bool grounded = isGrounded(); 
-        bool walled = (wallDir != 0); //True if the player is touching a wall
+        //bool walled = (wallDir != 0); //True if the player is touching a wall
 
         if (m_jumping && m_jumpTime + m_jumpDuration < Time.time)
         {
@@ -215,7 +220,7 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector2 force = new Vector2();
-        force.x = ((m_input.x * m_speed) - m_rb.velocity.x) * ((grounded && !walled) ? m_accelleration : m_airaccelleration); //* (walled ? 1 : m_accellerationMultiplier);
+        force.x = ((m_input.x * m_speed) - m_rb.velocity.x) * ((grounded && !walled) ? m_accelleration : m_airaccelleration) * (walled ? m_walledDeceleration : 1);
         force.y = 0f;
         if (m_rb.velocity.y < m_gravitySpeedTrashhold)
         {
@@ -316,9 +321,15 @@ public class PlayerController : MonoBehaviour
 
             m_isGrounded = Mathf.Abs(angle) > -1f && Mathf.Abs(angle) < 60f;
 
-            if (Mathf.Abs(angle) > 10f && Mathf.Abs(angle) < 60f)
+            if (Mathf.Abs(angle) > 2f && Mathf.Abs(angle) < 60f)
             {
                 m_slopeAngle = angle;
+                walled = false;
+            }
+            else if (Mathf.Abs(angle) > 60f)
+            {
+                walled = true;
+                m_slopeAngle = 0f;
             }
             else
             {
@@ -329,12 +340,14 @@ public class PlayerController : MonoBehaviour
         {
             m_isGrounded = false;
             m_slopeAngle = 0f;
+            walled = false;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         m_slopeAngle = 0f;
+        walled = false;
     }
 
     bool isGrounded()

@@ -191,6 +191,7 @@ MonoBehaviour:
   m_lateJumpForce: 30
   m_gravitySpeedTrashhold: -0.05
   m_friction: 1.75
+  m_walledDeceleration: 0.3
   m_offset: 0.2
   m_layermask:
     serializedVersion: 2
