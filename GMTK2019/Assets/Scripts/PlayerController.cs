@@ -219,6 +219,8 @@ public class PlayerController : MonoBehaviour
             m_canJump = false;
             m_jumpTime = Time.time;
             m_lateJumping = false;
+
+            m_playerAnimator.SetTrigger("LoseJump");
         }
         if (Input.GetButtonUp("Jump"))
         {
@@ -260,6 +262,7 @@ public class PlayerController : MonoBehaviour
     public void RecoverJump()
     {
         m_canJump = true;
+        m_playerAnimator.SetTrigger("GainJump");
     }
 
 }
