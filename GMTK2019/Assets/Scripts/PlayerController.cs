@@ -133,6 +133,10 @@ public class PlayerController : MonoBehaviour
 
     private bool m_bouncing = false;
 
+    private Collider2D m_collider = null;
+
+    private bool m_isGrounded = false;
+
 
     void Start()
     {
@@ -145,6 +149,8 @@ public class PlayerController : MonoBehaviour
         Input.ResetInputAxes();
 
         m_canJump = true;
+
+        m_collider = GetComponent<Collider2D>();
     }
 
     void Update()
@@ -154,13 +160,15 @@ public class PlayerController : MonoBehaviour
             HandleInput();
         }
 
-        if (m_rb.velocity.x != 0f)
+        bool isMoving = m_rb.velocity.x < -0.2f || m_rb.velocity.x > 0.2f;
+
+        if (isMoving)
         {
             m_sprite.flipX = m_rb.velocity.x < 0f;
             m_headSprite.flipX = m_rb.velocity.x < 0f;
         }
 
-        m_playerAnimator.SetBool("Running", m_rb.velocity.x != 0f);
+        m_playerAnimator.SetBool("Running", isMoving);
 
         if (m_jumpTime + m_minJumpDuration < Time.time)
         {
@@ -172,7 +180,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         int wallDir = m_groundState.wallDirection(); //Direction of the wall: 1 is right and -1 is left
-        bool grounded = true;// isGrounded(); //True if the player is touching the ground taking count of the cayote time
+        bool grounded = isGrounded(); //True if the player is touching the ground taking count of the cayote time
         bool walled = (wallDir != 0); //True if the player is touching a wall
 
         float xForce = ((m_input.x * m_speed) - m_rb.velocity.x) * ((grounded && !walled) ? m_accelleration : m_airaccelleration) * (walled ? 1 : m_accellerationMultiplier);
@@ -249,21 +257,41 @@ public class PlayerController : MonoBehaviour
         //accellerationMultiplier = (Input.GetAxis("Run") > 0) ? runningMultiplier : 1;
     }
 
-    bool isGrounded()
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (m_groundState.isGround())
-        { //True if the player is touching the ground)
-            m_groundTime = Time.time;
-            return true;
+        ContactPoint2D[] contacts = new ContactPoint2D[1];
+        if (collision.GetContacts(contacts) > 0)
+        {
+            var contactNormal = contacts[0].normal;
+
+            float angle = Vector2.Angle(Vector2.up, contactNormal);
+            Debug.Log(angle);
+
+            m_isGrounded = angle > -1f && angle < 50f;
         }
-//         else if (Time.time < m_groundTime + m_coyoteTime)
-//         { //If the player touched the ground recently, he can still jump #coyoteTime
-//             return true;
-//         }
         else
         {
-            return false;
+            m_isGrounded = false;
         }
+    }
+
+    bool isGrounded()
+    {
+        return m_isGrounded;
+
+//         if (m_groundState.isGround())
+//         { //True if the player is touching the ground)
+//             m_groundTime = Time.time;
+//             return true;
+//         }
+// //         else if (Time.time < m_groundTime + m_coyoteTime)
+// //         { //If the player touched the ground recently, he can still jump #coyoteTime
+// //             return true;
+// //         }
+//         else
+//         {
+//             return false;
+//         }
 
     }
 
