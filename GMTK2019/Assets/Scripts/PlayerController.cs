@@ -203,6 +203,17 @@ public class PlayerController : MonoBehaviour
         bool grounded = isGrounded(); 
         bool walled = (wallDir != 0); //True if the player is touching a wall
 
+        if (m_jumping && m_jumpTime + m_jumpDuration < Time.time)
+        {
+            m_jumping = false;
+            m_lateJumping = true;
+        }
+        if (m_jumpTime + m_jumpDuration + m_lateJumpDuration < Time.time)
+        {
+            m_lateJumping = false;
+            m_bouncing = false;
+        }
+
         Vector2 force = new Vector2();
         force.x = ((m_input.x * m_speed) - m_rb.velocity.x) * ((grounded && !walled) ? m_accelleration : m_airaccelleration); //* (walled ? 1 : m_accellerationMultiplier);
         force.y = 0f;
@@ -286,16 +297,7 @@ public class PlayerController : MonoBehaviour
         {
             m_jumping = false;
         }
-        if (m_jumping && m_jumpTime + m_jumpDuration < Time.time)
-        {
-            m_jumping = false;
-            m_lateJumping = true;
-        }
-        if (m_jumpTime + m_jumpDuration + m_lateJumpDuration < Time.time)
-        {
-            m_lateJumping = false;
-            m_bouncing = false;
-        }
+
 
         //accellerationMultiplier = (Input.GetAxis("Run") > 0) ? runningMultiplier : 1;
     }
