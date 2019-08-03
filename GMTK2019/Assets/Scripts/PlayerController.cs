@@ -137,6 +137,8 @@ public class PlayerController : MonoBehaviour
 
     private bool m_isGrounded = false;
 
+    private float m_slopeAngle = 0f;
+
 
     void Start()
     {
@@ -183,24 +185,32 @@ public class PlayerController : MonoBehaviour
         bool grounded = isGrounded(); //True if the player is touching the ground taking count of the cayote time
         bool walled = (wallDir != 0); //True if the player is touching a wall
 
-        float xForce = ((m_input.x * m_speed) - m_rb.velocity.x) * ((grounded && !walled) ? m_accelleration : m_airaccelleration) * (walled ? 1 : m_accellerationMultiplier);
-        float yForce = 0f;
+        Vector2 force = new Vector2();
+        force.x = ((m_input.x * m_speed) - m_rb.velocity.x) * ((grounded && !walled) ? m_accelleration : m_airaccelleration) * (walled ? 1 : m_accellerationMultiplier);
+        force.y = 0f;
         if (m_rb.velocity.y < m_gravitySpeedTrashhold)
         {
             if (!walled)
             {
-                yForce = Physics2D.gravity.y * (m_fallingMultiplayer - 1);
+                force.y = Physics2D.gravity.y * (m_fallingMultiplayer - 1);
             }
         }
         else if (m_jumping)
         {
-            yForce = m_jumpingForce;
+            force.y = m_jumpingForce;
         }
         else if (m_lateJumping)
         {
-            yForce = m_lateJumpForce;
+            force.y = m_lateJumpForce;
         }
-        m_rb.AddForce(new Vector2(xForce, yForce)); //Move player. If the player is falling, add more fall to the falling (depends on the falling Multiplaier)
+        else if (m_slopeAngle > 0.5f)
+        {
+            force.y = -Physics2D.gravity.y;
+            force = Vector2FromAngle(m_slopeAngle) * force.magnitude;
+        }
+
+
+        m_rb.AddForce(force); //Move player. If the player is falling, add more fall to the falling (depends on the falling Multiplaier)
 
         //Stop player if input.x is 0 (and grounded)
         //Jump if the player is pressing Jump (And grounded or walled)
@@ -268,11 +278,26 @@ public class PlayerController : MonoBehaviour
             Debug.Log(angle);
 
             m_isGrounded = angle > -1f && angle < 50f;
+
+            if (angle > 10f && angle < 50f)
+            {
+                m_slopeAngle = angle;
+            }
+            else
+            {
+                m_slopeAngle = 0f;
+            }
         }
         else
         {
             m_isGrounded = false;
+            m_slopeAngle = 0f;
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        m_slopeAngle = 0f;
     }
 
     bool isGrounded()
@@ -315,5 +340,11 @@ public class PlayerController : MonoBehaviour
 
         m_bouncing = true;
     }
+
+    public Vector2 Vector2FromAngle(float a)
+     {
+         a *= Mathf.Deg2Rad;
+         return new Vector2(Mathf.Cos(a), Mathf.Sin(a));
+     }
 
 }
