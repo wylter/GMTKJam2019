@@ -172,11 +172,18 @@ public class PlayerController : MonoBehaviour
 
         m_playerAnimator.SetBool("Running", isMoving);
 
-        if (m_jumpTime + m_minJumpDuration < Time.time)
+        if (m_jumpTime + m_minJumpDuration > Time.time)
+        {
+            m_playerAnimator.SetBool("Jumping", true);
+            m_isGrounded = false;
+        }
+        else
         {
             m_playerAnimator.SetBool("Jumping", !isGrounded());
         }
+
         
+
     }
 
     void FixedUpdate()
@@ -188,6 +195,7 @@ public class PlayerController : MonoBehaviour
         Vector2 force = new Vector2();
         force.x = ((m_input.x * m_speed) - m_rb.velocity.x) * ((grounded && !walled) ? m_accelleration : m_airaccelleration) * (walled ? 1 : m_accellerationMultiplier);
         force.y = 0f;
+        Debug.Log("Force before" + force.magnitude);
         if (m_rb.velocity.y < m_gravitySpeedTrashhold)
         {
             if (!walled)
@@ -203,10 +211,23 @@ public class PlayerController : MonoBehaviour
         {
             force.y = m_lateJumpForce;
         }
-        else if (m_slopeAngle > 0.5f)
+        else if (Mathf.Abs(m_slopeAngle) > 0.5f)
         {
-            force.y = -Physics2D.gravity.y;
-            force = Vector2FromAngle(m_slopeAngle) * force.magnitude;
+            float angle = m_slopeAngle;
+            if (force.x < 0f)
+            {
+                angle = m_slopeAngle + 180f;
+            }
+
+
+            force = Vector2FromAngle(angle).normalized * force.magnitude * 4;
+
+            Debug.Log("Force" + force.magnitude);
+
+            force.y += -Physics2D.gravity.y;
+
+            Debug.DrawLine(transform.position, transform.position + new Vector3(force.x, force.y, 0f), Color.red);
+            
         }
 
 
@@ -216,7 +237,7 @@ public class PlayerController : MonoBehaviour
         //Jump if the player is pressing Jump (And grounded or walled)
         //If the player is pressing the jump key in air, it keeps jumping high. If the player stops holding the jump key, his air velocity gets reduced.
         float xVelocity = (m_input.x == 0 && grounded) ? m_rb.velocity.x/m_friction : m_rb.velocity.x;
-        float yVelocity = (m_input.y == 1 && (grounded || walled)) ? m_jump : (m_jumping || m_rb.velocity.y < 0) ? m_rb.velocity.y : m_rb.velocity.y / 2;
+        float yVelocity = (m_input.y == 1) ? m_jump : (m_jumping || m_rb.velocity.y < 0) ? m_rb.velocity.y : m_rb.velocity.y / 2;
         m_rb.velocity = new Vector2(xVelocity, yVelocity);
 
 //         if (walled && !grounded && input.y == 1)
@@ -274,12 +295,12 @@ public class PlayerController : MonoBehaviour
         {
             var contactNormal = contacts[0].normal;
 
-            float angle = Vector2.Angle(Vector2.up, contactNormal);
+            float angle = Vector2.SignedAngle(Vector2.up, contactNormal);
             Debug.Log(angle);
 
-            m_isGrounded = angle > -1f && angle < 50f;
+            m_isGrounded = Mathf.Abs(angle) > -1f && Mathf.Abs(angle) < 50f;
 
-            if (angle > 10f && angle < 50f)
+            if (Mathf.Abs(angle) > 10f && Mathf.Abs(angle) < 50f)
             {
                 m_slopeAngle = angle;
             }
