@@ -92,6 +92,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float m_jumpDuration = 0.1f;
     [SerializeField]
+    private float m_minJumpDuration = 0.1f;
+    [SerializeField]
     private float m_lateJumpDuration = 0.1f;
     [SerializeField]
     private float m_jumpingForce = 5f;
@@ -160,12 +162,17 @@ public class PlayerController : MonoBehaviour
 
         m_playerAnimator.SetBool("Running", m_rb.velocity.x != 0f);
 
+        if (m_jumpTime + m_minJumpDuration < Time.time)
+        {
+            m_playerAnimator.SetBool("Jumping", !isGrounded());
+        }
+        
     }
 
     void FixedUpdate()
     {
         int wallDir = m_groundState.wallDirection(); //Direction of the wall: 1 is right and -1 is left
-        bool grounded = isGrounded(); //True if the player is touching the ground taking count of the cayote time
+        bool grounded = true;// isGrounded(); //True if the player is touching the ground taking count of the cayote time
         bool walled = (wallDir != 0); //True if the player is touching a wall
 
         float xForce = ((m_input.x * m_speed) - m_rb.velocity.x) * ((grounded && !walled) ? m_accelleration : m_airaccelleration) * (walled ? 1 : m_accellerationMultiplier);
@@ -221,6 +228,8 @@ public class PlayerController : MonoBehaviour
             m_lateJumping = false;
 
             m_playerAnimator.SetTrigger("LoseJump");
+            m_playerAnimator.SetBool("Jumping", true);
+            m_playerAnimator.SetTrigger("Jump");
         }
         if (Input.GetButtonUp("Jump"))
         {
@@ -241,8 +250,6 @@ public class PlayerController : MonoBehaviour
 
     bool isGrounded()
     {
-        return true;
-
         if (m_groundState.isGround())
         { //True if the player is touching the ground)
             m_groundTime = Time.time;

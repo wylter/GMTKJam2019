@@ -1202,6 +1202,11 @@ PrefabInstance:
       propertyPath: m_headSprite
       value: 
       objectReference: {fileID: 671248774}
+    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
+        type: 3}
+      propertyPath: m_offset
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4597874921758160571, guid: ec4a7c2bf742d574db53e71bf1309ad4,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
