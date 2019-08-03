@@ -1232,6 +1232,31 @@ PrefabInstance:
       propertyPath: m_layermask.m_Bits
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
+        type: 3}
+      propertyPath: m_jump
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
+        type: 3}
+      propertyPath: m_jumpingForce
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
+        type: 3}
+      propertyPath: m_lateJumpForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
+        type: 3}
+      propertyPath: m_jumpDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
+        type: 3}
+      propertyPath: m_lateJumpDuration
+      value: 0.125
+      objectReference: {fileID: 0}
     - target: {fileID: 4597874921758160571, guid: ec4a7c2bf742d574db53e71bf1309ad4,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
