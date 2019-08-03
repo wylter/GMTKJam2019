@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     private List<Level> m_levels;
 
     public Transform currentSpawnPosition;
+    public int overlapNum = 0;
 
     void Awake()
     {
@@ -54,6 +55,9 @@ public class GameController : MonoBehaviour
         {
             m_levels[i].SetCameraActive(false);
         }
+
+        //m_levels[0].SetAsCurrentLevel();
+        //m_levels[0].m_insideMe = true;
     }
 
     public void ToLevel(int levelIndex)
@@ -61,9 +65,11 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < m_levels.Count; i++)
         {
             m_levels[i].SetCameraActive(false);
+            m_levels[i].m_insideMe = false;
         }
 
         m_levels[levelIndex].SetCameraActive(true);
+        m_levels[levelIndex].m_insideMe = true;
 
         m_player.RecoverJump();
     }

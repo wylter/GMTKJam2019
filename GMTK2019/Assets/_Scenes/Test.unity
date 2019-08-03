@@ -463,6 +463,11 @@ PrefabInstance:
       propertyPath: m_player
       value: 
       objectReference: {fileID: 379915204}
+    - target: {fileID: 7839373634359883520, guid: bb0153d4b1608ae43bc39807992065a8,
+        type: 3}
+      propertyPath: overlapNum
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb0153d4b1608ae43bc39807992065a8, type: 3}
 --- !u!1 &671248772
@@ -1116,6 +1121,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3388665877064027865, guid: 9436105d28e859b458e232714087c04e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -26.620134
       objectReference: {fileID: 0}
     - target: {fileID: 3388665877064027870, guid: 9436105d28e859b458e232714087c04e,
         type: 3}
