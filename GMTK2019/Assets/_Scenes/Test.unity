@@ -850,7 +850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748103861}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.698658, y: -0.99999994, z: -5}
+  m_LocalPosition: {x: 21.533699, y: -0.99999994, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1122,6 +1122,11 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1904318746}
+    - target: {fileID: 3388665877064027865, guid: 9436105d28e859b458e232714087c04e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -26.136631
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9436105d28e859b458e232714087c04e, type: 3}
 --- !u!1001 &4597874919870820262
@@ -1140,6 +1145,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
+        type: 3}
+      propertyPath: m_headSprite
+      value: 
+      objectReference: {fileID: 671248774}
+    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
+        type: 3}
+      propertyPath: m_offset
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
+        type: 3}
+      propertyPath: m_minJumpDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
+        type: 3}
+      propertyPath: m_layermask.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 4597874921758160572, guid: ec4a7c2bf742d574db53e71bf1309ad4,
         type: 3}
@@ -1202,26 +1227,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1207122974022822609, guid: 81ad59a22bdb0b34ab6dadbf110c903b,
         type: 3}
-    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
-        type: 3}
-      propertyPath: m_headSprite
-      value: 
-      objectReference: {fileID: 671248774}
-    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
-        type: 3}
-      propertyPath: m_offset
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
-        type: 3}
-      propertyPath: m_minJumpDuration
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
-        type: 3}
-      propertyPath: m_layermask.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 4597874921758160571, guid: ec4a7c2bf742d574db53e71bf1309ad4,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
