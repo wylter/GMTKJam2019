@@ -8,9 +8,9 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public static GameController instance;
     [SerializeField]
-    private PlayerController m_player;
+    private PlayerController m_player = null;
     [SerializeField]
-    private List<Level> m_levels;
+    private List<Level> m_levels = null;
     [HideInInspector]
     public Transform currentSpawnPosition;
     [HideInInspector]

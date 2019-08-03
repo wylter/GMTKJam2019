@@ -82,12 +82,12 @@ public class PlayerController : MonoBehaviour
     private float m_jump = 14f;    //Jump Speed
     [SerializeField]
     private float m_fallingMultiplayer = 2; //Gravity Multiplayer for gravity
-    [SerializeField]
-    private float m_runningMultiplier = 2; //How much the run effect the accellerationeration
-    [SerializeField]
-    private float m_wallJumpMultiplier = 0.75f;
-    [SerializeField]
-    private float m_coyoteTime = 0.1f;
+//     [SerializeField]
+//     private float m_runningMultiplier = 2; //How much the run effect the accellerationeration
+//     [SerializeField]
+//     private float m_wallJumpMultiplier = 0.75f;
+//     [SerializeField]
+//     private float m_coyoteTime = 0.1f;
     [SerializeField]
     private float m_jumpDuration = 0.1f;
     [SerializeField]
@@ -112,27 +112,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AudioClip m_jumpClip;
     [SerializeField]
-    private LayerMask m_layermask;
-
-    private bool colorState = false; //False is white, True is Black //Btw we swapped the meaning of this, might be discrepancies in the comments.
+    private LayerMask m_layermask = 0;
 
     private Animator m_playerAnimator;
     private SpriteRenderer m_sprite;
     [SerializeField]
-    private SpriteRenderer m_headSprite;
+    private SpriteRenderer m_headSprite = null;
     private GroundState m_groundState;
     public Rigidbody2D m_rb;
     private Vector2 m_input;
     private bool m_jumping; //True if the player is olding the Jump button
     private bool m_lateJumping = false;
-    private bool m_changingButtonDown = false; // Variable necessary to make a trigger act like a Button. (Unity didnt allow the left trigger of the joypad to act as a button when chanigng, so this solution was necessary)
     private float m_accellerationMultiplier = 1; //Current acceleration multiplier dependant if the player is running or not
     private float m_groundTime = 0; //time we were last grounded
 
     private bool m_canJump = true;
 
     private float m_jumpTime = 0f;
-    private bool m_stop = false;
+    //private bool m_stop = false;
 
     private bool m_bouncing = false;
 

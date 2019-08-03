@@ -5,11 +5,11 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     [SerializeField]
-    private int m_levelIndex;
+    private int m_levelIndex = 0;
     [SerializeField]
-    private GameObject m_camera;
+    private GameObject m_camera = null;
     [SerializeField]
-    private Transform m_spawnPosition;
+    private Transform m_spawnPosition = null;
 
     public bool m_insideMe = false;
 
