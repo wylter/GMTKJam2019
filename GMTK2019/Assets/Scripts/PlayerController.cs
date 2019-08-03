@@ -115,6 +115,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator m_playerAnimator;
     private SpriteRenderer m_sprite;
+    [SerializeField]
+    private SpriteRenderer m_headSprite;
     private GroundState m_groundState;
     private Rigidbody2D m_rb;
     private Vector2 m_input;
@@ -153,8 +155,10 @@ public class PlayerController : MonoBehaviour
         if (m_rb.velocity.x != 0f)
         {
             m_sprite.flipX = m_rb.velocity.x < 0f;
+            m_headSprite.flipX = m_rb.velocity.x < 0f;
         }
 
+        m_playerAnimator.SetBool("Running", m_rb.velocity.x != 0f);
 
     }
 
