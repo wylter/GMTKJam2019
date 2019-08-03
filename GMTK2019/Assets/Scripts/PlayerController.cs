@@ -353,7 +353,6 @@ public class PlayerController : MonoBehaviour
     {
         m_input.y = 1;
         m_jumping = true;
-        m_canJump = false;
         m_jumpTime = Time.time;
         m_lateJumping = false;
 

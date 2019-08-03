@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8352211482149258967}
   - component: {fileID: 8352211482149258966}
   m_Layer: 0
-  m_Name: Trampoline
+  m_Name: TrampolineSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -469685285
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 49ebe1e1408897047bcb24fd7c5d2a92, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 654adc3dea62ecf46a04d96751941bba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,18 +95,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000047683716, y: 0.013400912}
+  m_Offset: {x: -0.0036363602, y: -0.18804252}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 0.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9961615, y: 0.21407294}
+  m_Size: {x: 1.006155, y: 0.6169598}
   m_EdgeRadius: 0
 --- !u!1 &8352211482747463350
 GameObject:
@@ -153,7 +153,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.3}
+  m_Offset: {x: -0.00000047683716, y: 0.3636493}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -164,7 +164,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 0.15}
+  m_Size: {x: 0.94211674, y: 0.27729857}
   m_EdgeRadius: 0
 --- !u!114 &8352211482747463351
 MonoBehaviour:
