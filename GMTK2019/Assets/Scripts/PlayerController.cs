@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    //Object Used to check the groundstate of the player.
     [System.Serializable]
     public class GroundState
     {
@@ -18,13 +17,13 @@ public class PlayerController : MonoBehaviour
         private float realWidth;
 
 
-        //private LayerMask wallMask;
+        private LayerMask wallMask;
 
         //GroundState constructor.  Sets offsets for raycasting.
-        public GroundState(Transform playerRef, float offset)
+        public GroundState(Transform playerRef, float offset, LayerMask wallMask)
         {
 
-            //this.wallMask = wallMask;
+            this.wallMask = wallMask;
 
             playerTransform = playerRef.transform;
             Vector2 playerExtents = playerTransform.GetComponent<Collider2D>().bounds.extents;
@@ -38,15 +37,15 @@ public class PlayerController : MonoBehaviour
 
         public void setWallMask(LayerMask wallMask)
         {
-            //this.wallMask = wallMask;
+            this.wallMask = wallMask;
         }
 
         //Returns whether or not player is touching ground.
         public bool isGround()
         {
-            bool bottom1 = Physics2D.Raycast(new Vector2(playerTransform.position.x, playerTransform.position.y - height), Vector2.down, length);
-            bool bottom2 = Physics2D.Raycast(new Vector2(playerTransform.position.x + realWidth, playerTransform.position.y - height), Vector2.down, length);
-            bool bottom3 = Physics2D.Raycast(new Vector2(playerTransform.position.x - realWidth, playerTransform.position.y - height), Vector2.down, length);
+            bool bottom1 = Physics2D.Raycast(new Vector2(playerTransform.position.x, playerTransform.position.y - height), Vector2.down, length, wallMask);
+            bool bottom2 = Physics2D.Raycast(new Vector2(playerTransform.position.x + realWidth, playerTransform.position.y - height), Vector2.down, length, wallMask);
+            bool bottom3 = Physics2D.Raycast(new Vector2(playerTransform.position.x - realWidth, playerTransform.position.y - height), Vector2.down, length, wallMask);
             if (bottom1 || bottom2 || bottom3)
                 return true;
             else
@@ -56,12 +55,12 @@ public class PlayerController : MonoBehaviour
         //Returns direction of wall.
         public int wallDirection()
         {
-            bool left1 = Physics2D.Raycast(new Vector2(playerTransform.position.x - width, playerTransform.position.y), Vector2.left, length);
-            bool left2 = Physics2D.Raycast(new Vector2(playerTransform.position.x - width, playerTransform.position.y + realHeight), Vector2.left, length);
-            bool left3 = Physics2D.Raycast(new Vector2(playerTransform.position.x - width, playerTransform.position.y - realHeight), Vector2.left, length);
-            bool right1 = Physics2D.Raycast(new Vector2(playerTransform.position.x + width, playerTransform.position.y), Vector2.right, length);
-            bool right2 = Physics2D.Raycast(new Vector2(playerTransform.position.x + width, playerTransform.position.y + realHeight), Vector2.right, length);
-            bool right3 = Physics2D.Raycast(new Vector2(playerTransform.position.x + width, playerTransform.position.y - realHeight), Vector2.right, length);
+            bool left1 = Physics2D.Raycast(new Vector2(playerTransform.position.x - width, playerTransform.position.y), Vector2.left, length, wallMask);
+            bool left2 = Physics2D.Raycast(new Vector2(playerTransform.position.x - width, playerTransform.position.y + realHeight), Vector2.left, length, wallMask);
+            bool left3 = Physics2D.Raycast(new Vector2(playerTransform.position.x - width, playerTransform.position.y - realHeight), Vector2.left, length, wallMask);
+            bool right1 = Physics2D.Raycast(new Vector2(playerTransform.position.x + width, playerTransform.position.y), Vector2.right, length, wallMask);
+            bool right2 = Physics2D.Raycast(new Vector2(playerTransform.position.x + width, playerTransform.position.y + realHeight), Vector2.right, length, wallMask);
+            bool right3 = Physics2D.Raycast(new Vector2(playerTransform.position.x + width, playerTransform.position.y - realHeight), Vector2.right, length, wallMask);
 
             if (left1 || left2 || left3)
                 return -1;
@@ -112,6 +111,8 @@ public class PlayerController : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField]
     private AudioClip m_jumpClip;
+    [SerializeField]
+    private LayerMask m_layermask;
 
     private bool colorState = false; //False is white, True is Black //Btw we swapped the meaning of this, might be discrepancies in the comments.
 
@@ -120,7 +121,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private SpriteRenderer m_headSprite;
     private GroundState m_groundState;
-    private Rigidbody2D m_rb;
+    public Rigidbody2D m_rb;
     private Vector2 m_input;
     private bool m_jumping; //True if the player is olding the Jump button
     private bool m_lateJumping = false;
@@ -137,7 +138,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //Inizialization
-        m_groundState = new GroundState(transform, m_offset);
+        m_groundState = new GroundState(transform, m_offset, m_layermask);
         m_rb = GetComponent<Rigidbody2D>();
         m_playerAnimator = GetComponent<Animator>();
         m_sprite = GetComponent<SpriteRenderer>();
@@ -255,10 +256,10 @@ public class PlayerController : MonoBehaviour
             m_groundTime = Time.time;
             return true;
         }
-        else if (Time.time < m_groundTime + m_coyoteTime)
-        { //If the player touched the ground recently, he can still jump #coyoteTime
-            return true;
-        }
+//         else if (Time.time < m_groundTime + m_coyoteTime)
+//         { //If the player touched the ground recently, he can still jump #coyoteTime
+//             return true;
+//         }
         else
         {
             return false;

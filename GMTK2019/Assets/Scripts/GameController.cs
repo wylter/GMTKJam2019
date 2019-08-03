@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour
     private void ResetToLastSpawn()
     {
         m_player.transform.position = currentSpawnPosition.position;
+        m_player.m_rb.velocity = Vector2.zero;
         m_player.RecoverJump();
     }
 
