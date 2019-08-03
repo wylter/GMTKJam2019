@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6092767464255058911}
   - component: {fileID: 9142233125383140943}
   - component: {fileID: -100521197239118601}
+  - component: {fileID: 941199409926381619}
   m_Layer: 9
   m_Name: OneDirectionMovingBalloon
   m_TagString: MovingPlatform
@@ -157,3 +158,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_timeToLive: 10
+--- !u!95 &941199409926381619
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589796604336596439}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9035718737fd57c41b60adefa23c5be9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

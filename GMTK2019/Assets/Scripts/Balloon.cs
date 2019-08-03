@@ -20,7 +20,7 @@ public class Balloon : MonoBehaviour
     {
         yield return new WaitForSeconds(m_timeToLive);
 
-        Die();
+        m_animator.SetTrigger("Die");
     }
 
     private void Die()
