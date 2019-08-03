@@ -40,9 +40,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackUI
+    uniqueID: 4292983483
+    locked: 0
   - name: Prop
     uniqueID: 3825282011
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 494948571
     locked: 0
