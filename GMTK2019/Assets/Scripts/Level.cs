@@ -42,6 +42,11 @@ public class Level : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             GameController.instance.overlapNum--;
+
+            if (GameController.instance.overlapNum == 0)
+            {
+                GameController.instance.KillPlayer();
+            }
         }
     }
 
