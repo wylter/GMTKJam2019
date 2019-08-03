@@ -143,9 +143,8 @@ GameObject:
   - component: {fileID: 193419256}
   - component: {fileID: 193419255}
   - component: {fileID: 193419254}
-  - component: {fileID: 193419257}
-  m_Layer: 9
-  m_Name: BouncePlatform
+  m_Layer: 0
+  m_Name: Trampoline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,18 +163,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03712215}
+  m_Offset: {x: 0.00000047683716, y: -0.06360257}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 2, y: 0.5}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.2457557}
+  m_Size: {x: 1.9961615, y: 0.3680799}
   m_EdgeRadius: 0
 --- !u!212 &193419255
 SpriteRenderer:
@@ -212,11 +211,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -469685285
+  m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 077469e0f2ddaea43a599a0cc259da75, type: 3}
-  m_Color: {r: 0.92221785, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f3f2341091788ab499ff6cb2d6dd543f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -235,24 +234,12 @@ Transform:
   m_GameObject: {fileID: 193419253}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.07, y: -2.56, z: 0}
-  m_LocalScale: {x: 7, y: 1.063501, z: 1.0635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1820122691}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &193419257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193419253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5537adc1c3e7ea249b50a41fa65dafa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &379915204 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
@@ -393,7 +380,7 @@ GameObject:
   - component: {fileID: 637343756}
   - component: {fileID: 637343755}
   m_Layer: 9
-  m_Name: Ground (1)
+  m_Name: groundttest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2107,6 +2094,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bouncer
       objectReference: {fileID: 0}
+    - target: {fileID: 5050872344850167432, guid: 6e70f1cf9f064a14f8df5b4efcc7fe37,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5050872344850167433, guid: 6e70f1cf9f064a14f8df5b4efcc7fe37,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2161,6 +2153,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050872344850167439, guid: 6e70f1cf9f064a14f8df5b4efcc7fe37,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050872344850167439, guid: 6e70f1cf9f064a14f8df5b4efcc7fe37,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050872344850167439, guid: 6e70f1cf9f064a14f8df5b4efcc7fe37,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050872344850167439, guid: 6e70f1cf9f064a14f8df5b4efcc7fe37,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050872344850167439, guid: 6e70f1cf9f064a14f8df5b4efcc7fe37,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e70f1cf9f064a14f8df5b4efcc7fe37, type: 3}

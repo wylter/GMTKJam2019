@@ -193,9 +193,8 @@ public class PlayerController : MonoBehaviour
         bool walled = (wallDir != 0); //True if the player is touching a wall
 
         Vector2 force = new Vector2();
-        force.x = ((m_input.x * m_speed) - m_rb.velocity.x) * ((grounded && !walled) ? m_accelleration : m_airaccelleration) * (walled ? 1 : m_accellerationMultiplier);
+        force.x = ((m_input.x * m_speed) - m_rb.velocity.x) * ((grounded && !walled) ? m_accelleration : m_airaccelleration); //* (walled ? 1 : m_accellerationMultiplier);
         force.y = 0f;
-        Debug.Log("Force before" + force.magnitude);
         if (m_rb.velocity.y < m_gravitySpeedTrashhold)
         {
             if (!walled)
@@ -222,11 +221,10 @@ public class PlayerController : MonoBehaviour
 
             force = Vector2FromAngle(angle).normalized * force.magnitude * 4;
 
-            Debug.Log("Force" + force.magnitude);
-
             force.y += -Physics2D.gravity.y;
 
             Debug.DrawLine(transform.position, transform.position + new Vector3(force.x, force.y, 0f), Color.red);
+            Debug.Log("Slope");
             
         }
 
@@ -250,6 +248,8 @@ public class PlayerController : MonoBehaviour
 //         }
 
         m_input.y = 0;
+
+        Debug.Log("Force: " + force.x + "\nVelocity: " + xVelocity);
     }
 
     //Input Reading
@@ -291,7 +291,9 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         ContactPoint2D[] contacts = new ContactPoint2D[1];
-        if (collision.GetContacts(contacts) > 0)
+
+        bool isInsideLayerMask = m_layermask == (m_layermask | (1 << collision.collider.gameObject.layer));
+        if (isInsideLayerMask && collision.GetContacts(contacts) > 0)
         {
             var contactNormal = contacts[0].normal;
 
@@ -360,6 +362,7 @@ public class PlayerController : MonoBehaviour
         m_playerAnimator.SetTrigger("Jump");
 
         m_bouncing = true;
+
     }
 
     public Vector2 Vector2FromAngle(float a)
