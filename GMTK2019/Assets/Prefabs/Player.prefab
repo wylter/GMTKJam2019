@@ -181,12 +181,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 7.5
   m_accelleration: 4.5
-  m_airaccelleration: 1.5
+  m_airaccelleration: 4.5
   m_jump: 8
   m_fallingMultiplayer: 3
-  m_jumpDuration: 0.15
+  m_jumpDuration: 0.16
   m_minJumpDuration: 0.2
-  m_lateJumpDuration: 0.125
+  m_lateJumpDuration: 0.12
   m_jumpingForce: 75
   m_lateJumpForce: 30
   m_gravitySpeedTrashhold: -0.05
