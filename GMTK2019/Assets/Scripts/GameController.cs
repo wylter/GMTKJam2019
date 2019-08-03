@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
 {
     [HideInInspector]
     public static GameController instance;
+    [SerializeField]
+    private List<Level> m_levels;
 
     void Awake()
     {
@@ -23,6 +25,8 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+
+        Init();
     }
 
     private void Update()
@@ -31,5 +35,23 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+    }
+
+    private void Init()
+    {
+        for (int i = 1; i < m_levels.Count; i++)
+        {
+            m_levels[i].SetCameraActive(false);
+        }
+    }
+
+    public void ToLevel(int levelIndex)
+    {
+        for (int i = 0; i < m_levels.Count; i++)
+        {
+            m_levels[i].SetCameraActive(false);
+        }
+
+        m_levels[levelIndex].SetCameraActive(true);
     }
 }
