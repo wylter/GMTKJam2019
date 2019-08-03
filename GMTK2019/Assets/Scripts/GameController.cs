@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public static GameController instance;
     [SerializeField]
+    private PlayerController m_player;
+    [SerializeField]
     private List<Level> m_levels;
 
     void Awake()
@@ -53,5 +55,7 @@ public class GameController : MonoBehaviour
         }
 
         m_levels[levelIndex].SetCameraActive(true);
+
+        m_player.RecoverJump();
     }
 }

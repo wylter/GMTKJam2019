@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour
     private bool colorState = false; //False is white, True is Black //Btw we swapped the meaning of this, might be discrepancies in the comments.
 
     private Animator m_playerAnimator;
+    private SpriteRenderer m_sprite;
     private GroundState m_groundState;
     private Rigidbody2D m_rb;
     private Vector2 m_input;
@@ -135,6 +136,7 @@ public class PlayerController : MonoBehaviour
         m_groundState = new GroundState(transform, m_offset);
         m_rb = GetComponent<Rigidbody2D>();
         m_playerAnimator = GetComponent<Animator>();
+        m_sprite = GetComponent<SpriteRenderer>();
 
         Input.ResetInputAxes();
 
@@ -147,6 +149,13 @@ public class PlayerController : MonoBehaviour
         {
             HandleInput();
         }
+
+        if (m_rb.velocity.x != 0f)
+        {
+            m_sprite.flipX = m_rb.velocity.x < 0f;
+        }
+
+
     }
 
     void FixedUpdate()
@@ -203,7 +212,7 @@ public class PlayerController : MonoBehaviour
         {
             m_input.y = 1;
             m_jumping = true;
-            //m_canJump = false;
+            m_canJump = false;
             m_jumpTime = Time.time;
             m_lateJumping = false;
         }
@@ -242,6 +251,11 @@ public class PlayerController : MonoBehaviour
             return false;
         }
 
+    }
+
+    public void RecoverJump()
+    {
+        m_canJump = true;
     }
 
 }
