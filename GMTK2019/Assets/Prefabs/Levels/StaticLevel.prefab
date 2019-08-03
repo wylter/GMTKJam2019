@@ -88,7 +88,7 @@ MonoBehaviour:
   m_LookaheadSmoothing: 10
   m_LookaheadIgnoreY: 1
   m_XDamping: 1
-  m_YDamping: 1
+  m_YDamping: 0
   m_ZDamping: 1
   m_ScreenX: 0.45
   m_ScreenY: 0.5
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 4671313951129349693}
   - component: {fileID: 4671313951129349692}
   m_Layer: 0
-  m_Name: Level0
+  m_Name: StaticLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,8 +203,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 7, y: 4}
-      - {x: -12.7, y: 4}
-      - {x: -12.7, y: -6}
+      - {x: -10.8, y: 4}
+      - {x: -10.8, y: -6}
       - {x: 7, y: -6}
 --- !u!114 &4671313951129349692
 MonoBehaviour:
@@ -221,6 +221,7 @@ MonoBehaviour:
   m_levelIndex: 0
   m_camera: {fileID: 4671313951208927623}
   m_spawnPosition: {fileID: 4671313950783201250}
+  m_insideMe: 0
 --- !u!1 &4671313951208927623
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +248,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4671313951208927623}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.770134, y: -0.7060001, z: -5}
+  m_LocalPosition: {x: -7.110738, y: -0.80000013, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4671313950755347748}

@@ -11,9 +11,17 @@ public class GameController : MonoBehaviour
     private PlayerController m_player;
     [SerializeField]
     private List<Level> m_levels;
-
+    [HideInInspector]
     public Transform currentSpawnPosition;
+    [HideInInspector]
     public int overlapNum = 0;
+    [HideInInspector]
+    public List<GameObject> m_respawnList;
+
+    public PlayerController player
+    {
+        get { return m_player; }
+    }
 
     void Awake()
     {
@@ -25,6 +33,8 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        m_respawnList = new List<GameObject>();
     }
 
     private void Start()
@@ -49,6 +59,11 @@ public class GameController : MonoBehaviour
         m_player.transform.position = currentSpawnPosition.position;
         m_player.m_rb.velocity = Vector2.zero;
         m_player.RecoverJump();
+
+        for (int i = 0; i < m_respawnList.Count; i++)
+        {
+            m_respawnList[i].SetActive(true);
+        }
     }
 
     private void Init()

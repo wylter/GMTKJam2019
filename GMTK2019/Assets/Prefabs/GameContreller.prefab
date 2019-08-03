@@ -43,4 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af81b7aebf207444a926e4fa98e9693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
+  m_player: {fileID: 0}
+  m_levels:
+  - {fileID: 0}
+  - {fileID: 0}
+  currentSpawnPosition: {fileID: 0}
+  overlapNum: 0

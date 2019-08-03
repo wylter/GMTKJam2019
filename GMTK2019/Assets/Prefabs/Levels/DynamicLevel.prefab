@@ -169,7 +169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3388665877064027868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.620134, y: -0.80000013, z: -5}
+  m_LocalPosition: {x: -26.800224, y: -0.80000013, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3388665876090596795}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 3388665877694413109}
   - component: {fileID: 3388665877694413111}
   m_Layer: 0
-  m_Name: Level1
+  m_Name: DynamicLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,3 +308,4 @@ MonoBehaviour:
   m_levelIndex: 1
   m_camera: {fileID: 3388665877064027868}
   m_spawnPosition: {fileID: 3388665876093656483}
+  m_insideMe: 0

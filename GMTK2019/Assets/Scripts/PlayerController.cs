@@ -134,6 +134,8 @@ public class PlayerController : MonoBehaviour
     private float m_jumpTime = 0f;
     private bool m_stop = false;
 
+    private bool m_bouncing = false;
+
 
     void Start()
     {
@@ -232,7 +234,7 @@ public class PlayerController : MonoBehaviour
             m_playerAnimator.SetBool("Jumping", true);
             m_playerAnimator.SetTrigger("Jump");
         }
-        if (Input.GetButtonUp("Jump"))
+        if (!m_bouncing && Input.GetButtonUp("Jump"))
         {
             m_jumping = false;
         }
@@ -244,6 +246,7 @@ public class PlayerController : MonoBehaviour
         if (m_jumpTime + m_jumpDuration + m_lateJumpDuration < Time.time)
         {
             m_lateJumping = false;
+            m_bouncing = false;
         }
 
         //accellerationMultiplier = (Input.GetAxis("Run") > 0) ? runningMultiplier : 1;
@@ -271,6 +274,21 @@ public class PlayerController : MonoBehaviour
     {
         m_canJump = true;
         m_playerAnimator.SetTrigger("GainJump");
+    }
+
+    public void Bounce()
+    {
+        m_input.y = 1;
+        m_jumping = true;
+        m_canJump = false;
+        m_jumpTime = Time.time;
+        m_lateJumping = false;
+
+        //m_playerAnimator.SetTrigger("LoseJump");
+        m_playerAnimator.SetBool("Jumping", true);
+        m_playerAnimator.SetTrigger("Jump");
+
+        m_bouncing = true;
     }
 
 }
