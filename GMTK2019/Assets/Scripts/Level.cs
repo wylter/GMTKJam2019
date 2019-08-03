@@ -8,6 +8,8 @@ public class Level : MonoBehaviour
     private int m_levelIndex;
     [SerializeField]
     private GameObject m_camera;
+    [SerializeField]
+    private Transform m_spawnPosition;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,7 +17,8 @@ public class Level : MonoBehaviour
         {
             GameController.instance.ToLevel(m_levelIndex);
         }
-            
+
+        GameController.instance.currentSpawnPosition = m_spawnPosition;
     }
 
     public void SetCameraActive(bool active)

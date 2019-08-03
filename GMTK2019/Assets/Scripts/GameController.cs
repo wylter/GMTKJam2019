@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private List<Level> m_levels;
 
+    public Transform currentSpawnPosition;
+
     void Awake()
     {
         if (instance == null)
@@ -35,8 +37,14 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetButtonDown("Reset"))
         {
-            SceneManager.LoadScene(0);
+            ResetToLastSpawn();
         }
+    }
+
+    private void ResetToLastSpawn()
+    {
+        m_player.transform.position = currentSpawnPosition.position;
+        m_player.RecoverJump();
     }
 
     private void Init()
