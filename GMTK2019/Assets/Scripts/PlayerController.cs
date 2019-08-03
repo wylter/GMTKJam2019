@@ -189,7 +189,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         int wallDir = m_groundState.wallDirection(); //Direction of the wall: 1 is right and -1 is left
-        bool grounded = isGrounded(); //True if the player is touching the ground taking count of the cayote time
+        bool grounded = isGrounded(); 
         bool walled = (wallDir != 0); //True if the player is touching a wall
 
         Vector2 force = new Vector2();
