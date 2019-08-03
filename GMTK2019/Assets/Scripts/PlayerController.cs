@@ -300,9 +300,9 @@ public class PlayerController : MonoBehaviour
             float angle = Vector2.SignedAngle(Vector2.up, contactNormal);
             Debug.Log(angle);
 
-            m_isGrounded = Mathf.Abs(angle) > -1f && Mathf.Abs(angle) < 50f;
+            m_isGrounded = Mathf.Abs(angle) > -1f && Mathf.Abs(angle) < 60f;
 
-            if (Mathf.Abs(angle) > 10f && Mathf.Abs(angle) < 50f)
+            if (Mathf.Abs(angle) > 10f && Mathf.Abs(angle) < 60f)
             {
                 m_slopeAngle = angle;
             }
