@@ -108,16 +108,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float m_offset = 0.1f; //Offset per cercare un muro in GroundState
     [Space]
+    [SerializeField]
+    private LayerMask m_layermask = 0;
+        [SerializeField]
+    private SpriteRenderer m_headSprite = null;
     [Header("Audio Settings")]
     [SerializeField]
     private AudioClip m_jumpClip;
     [SerializeField]
-    private LayerMask m_layermask = 0;
+    private AudioClip m_bounceClip;
 
     private Animator m_playerAnimator;
     private SpriteRenderer m_sprite;
-    [SerializeField]
-    private SpriteRenderer m_headSprite = null;
+
     private GroundState m_groundState;
     public Rigidbody2D m_rb;
     private Vector2 m_input;
@@ -249,7 +252,7 @@ public class PlayerController : MonoBehaviour
 
         m_input.y = 0;
 
-        Debug.Log("Force: " + force.x + "\nVelocity: " + xVelocity);
+        //Debug.Log("Force: " + force.x + "\nVelocity: " + xVelocity);
     }
 
     //Input Reading
@@ -269,6 +272,7 @@ public class PlayerController : MonoBehaviour
             m_playerAnimator.SetTrigger("LoseJump");
             m_playerAnimator.SetBool("Jumping", true);
             m_playerAnimator.SetTrigger("Jump");
+            SoundController.instance.PlaySingle(m_jumpClip);
         }
         if (!m_bouncing && Input.GetButtonUp("Jump"))
         {
@@ -359,6 +363,7 @@ public class PlayerController : MonoBehaviour
         //m_playerAnimator.SetTrigger("LoseJump");
         m_playerAnimator.SetBool("Jumping", true);
         m_playerAnimator.SetTrigger("Jump");
+        SoundController.instance.PlaySingle(m_bounceClip);
 
         m_bouncing = true;
 

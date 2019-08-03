@@ -16,7 +16,8 @@ public class TransformShooter : MonoBehaviour
         if (Time.time > m_lastTime + m_spawnTime)
         {
             m_lastTime = Time.time;
-            Instantiate(m_prefab, transform.position, transform.rotation);
+            GameObject instance = Instantiate(m_prefab, transform.position, transform.rotation);
+            instance.transform.parent = transform;
         }
     }
 }
