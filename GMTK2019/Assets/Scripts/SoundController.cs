@@ -21,7 +21,7 @@ public class SoundController : MonoBehaviour
     [Space]
     [Header("Song")]
     [SerializeField]
-    private AudioClip m_firstSongClip;
+    private AudioClip m_firstSongClip = null;
 
     void Awake()
     {
@@ -34,7 +34,7 @@ public class SoundController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()

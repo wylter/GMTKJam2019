@@ -11,6 +11,11 @@ public class Level : MonoBehaviour
     [SerializeField]
     private Transform m_spawnPosition = null;
 
+    public Transform spawnPosition
+    {
+        get { return m_spawnPosition; }
+    }
+
     public bool m_insideMe = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,8 +38,6 @@ public class Level : MonoBehaviour
     public void SetAsCurrentLevel()
     {
         GameController.instance.ToLevel(m_levelIndex);
-
-        GameController.instance.currentSpawnPosition = m_spawnPosition;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

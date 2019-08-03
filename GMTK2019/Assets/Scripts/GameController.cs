@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    [Header("Settings")]
     [HideInInspector]
     public static GameController instance;
     [SerializeField]
@@ -17,6 +18,13 @@ public class GameController : MonoBehaviour
     public int overlapNum = 0;
     [HideInInspector]
     public List<GameObject> m_respawnList;
+
+    [Space]
+    [Header("Debug")]
+    [SerializeField]
+    private bool m_debugMode = false;
+    [SerializeField]
+    private int m_selectedLevel = 0;
 
     public PlayerController player
     {
@@ -42,8 +50,14 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         Init();
-
+   
         EnforceResolution();
+
+        if (m_debugMode)
+        {
+            ToLevel(m_selectedLevel);
+            ResetToLastSpawn();
+        }
     }
 
     private void Update()
@@ -87,6 +101,7 @@ public class GameController : MonoBehaviour
 
         m_levels[levelIndex].SetCameraActive(true);
         m_levels[levelIndex].m_insideMe = true;
+        currentSpawnPosition = m_levels[levelIndex].spawnPosition;
 
         m_player.RecoverJump();
     }

@@ -114,9 +114,9 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer m_headSprite = null;
     [Header("Audio Settings")]
     [SerializeField]
-    private AudioClip m_jumpClip;
+    private AudioClip m_jumpClip = null;
     [SerializeField]
-    private AudioClip m_bounceClip;
+    private AudioClip m_bounceClip = null;
 
     private Animator m_playerAnimator;
     private SpriteRenderer m_sprite;
@@ -126,8 +126,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 m_input;
     private bool m_jumping; //True if the player is olding the Jump button
     private bool m_lateJumping = false;
-    private float m_accellerationMultiplier = 1; //Current acceleration multiplier dependant if the player is running or not
-    private float m_groundTime = 0; //time we were last grounded
+    //private float m_accellerationMultiplier = 1; //Current acceleration multiplier dependant if the player is running or not
+    //private float m_groundTime = 0; //time we were last grounded
 
     private bool m_canJump = true;
 
@@ -142,14 +142,22 @@ public class PlayerController : MonoBehaviour
 
     private float m_slopeAngle = 0f;
 
-
-    void Start()
+    public Collider2D collider
     {
-        //Inizialization
+        get { return m_collider; }
+    }
+
+    private void Awake()
+    {
         m_groundState = new GroundState(transform, m_offset, m_layermask);
         m_rb = GetComponent<Rigidbody2D>();
         m_playerAnimator = GetComponent<Animator>();
         m_sprite = GetComponent<SpriteRenderer>();
+    }
+
+    void Start()
+    {
+        //Inizialization
 
         Input.ResetInputAxes();
 
