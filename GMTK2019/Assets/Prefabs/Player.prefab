@@ -230,6 +230,7 @@ MonoBehaviour:
   m_headSprite: {fileID: 671248774}
   m_jumpClip: {fileID: 8300000, guid: b15de505358cac447be070a8364013fd, type: 3}
   m_bounceClip: {fileID: 8300000, guid: 327f9030fccad414b997cd1b3ca6ce2b, type: 3}
+  m_sprite: {fileID: 1202388748}
   m_rb: {fileID: 0}
 --- !u!50 &4597874921758160570
 Rigidbody2D:
