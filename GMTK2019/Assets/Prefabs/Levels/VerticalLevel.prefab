@@ -137,7 +137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14209053926705295}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.98, y: -0.65, z: 0}
+  m_LocalPosition: {x: -9.08, y: -3.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 14209054442253339}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 14209054442253336}
   - component: {fileID: 3401500462806570281}
   m_Layer: 0
-  m_Name: Level3
+  m_Name: VerticalLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,10 +203,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 22, y: 20}
-      - {x: 4.2, y: 20}
-      - {x: 4.2, y: -6}
-      - {x: 22, y: -6}
+    - - {x: 7, y: 20}
+      - {x: -10.8, y: 20}
+      - {x: -10.8, y: -6}
+      - {x: 7, y: -6}
 --- !u!114 &14209054442253336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f5da0ed63ffa442a7b7134cf27ecc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_levelIndex: 3
+  m_levelIndex: 8
   m_camera: {fileID: 14209055002860531}
   m_spawnPosition: {fileID: 14209053926705292}
   m_insideMe: 0
@@ -261,7 +261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14209055002860531}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.688438, y: -0.4800001, z: -5}
+  m_LocalPosition: {x: 0, y: -2.1, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 14209053898553492}
