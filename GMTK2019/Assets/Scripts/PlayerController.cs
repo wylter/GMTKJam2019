@@ -120,8 +120,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AudioClip m_bounceClip = null;
 
+    [Header("Other")]
+    [SerializeField]
+    private SpriteRenderer m_sprite = null;
+
     private Animator m_playerAnimator;
-    private SpriteRenderer m_sprite;
 
     private GroundState m_groundState;
     public Rigidbody2D m_rb;
@@ -147,17 +150,11 @@ public class PlayerController : MonoBehaviour
 
     private bool walled = false;
 
-    public Collider2D collider
-    {
-        get { return m_collider; }
-    }
-
     private void Awake()
     {
         m_groundState = new GroundState(transform, m_offset, m_layermask);
         m_rb = GetComponent<Rigidbody2D>();
         m_playerAnimator = GetComponent<Animator>();
-        m_sprite = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -182,7 +179,7 @@ public class PlayerController : MonoBehaviour
 
         if (isMoving)
         {
-            //m_sprite.flipX = m_rb.velocity.x < 0f;
+            m_sprite.flipX = m_rb.velocity.x < 0f;
             m_headSprite.flipX = m_rb.velocity.x < 0f;
         }
 

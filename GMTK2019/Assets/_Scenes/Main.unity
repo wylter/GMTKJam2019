@@ -4679,16 +4679,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
-        type: 3}
-      propertyPath: m_bounceClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 327f9030fccad414b997cd1b3ca6ce2b, type: 3}
-    - target: {fileID: 4597874921758160573, guid: ec4a7c2bf742d574db53e71bf1309ad4,
-        type: 3}
-      propertyPath: m_jumpClip
-      value: 
-      objectReference: {fileID: 8300000, guid: b15de505358cac447be070a8364013fd, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4a7c2bf742d574db53e71bf1309ad4, type: 3}
 --- !u!1 &1163412513
