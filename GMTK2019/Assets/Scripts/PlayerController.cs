@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
 
         if (isMoving)
         {
-            m_sprite.flipX = m_rb.velocity.x < 0f;
+            //m_sprite.flipX = m_rb.velocity.x < 0f;
             m_headSprite.flipX = m_rb.velocity.x < 0f;
         }
 
