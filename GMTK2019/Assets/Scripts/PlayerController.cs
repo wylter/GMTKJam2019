@@ -5,72 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    [System.Serializable]
-    public class GroundState
-    {
-
-        private Transform playerTransform;
-        private float width;
-        private float height;
-        private float length;
-        private float realHeight;
-        private float realWidth;
-
-
-        private LayerMask wallMask;
-
-        //GroundState constructor.  Sets offsets for raycasting.
-        public GroundState(Transform playerRef, float offset, LayerMask wallMask)
-        {
-
-            this.wallMask = wallMask;
-
-            playerTransform = playerRef.transform;
-            Vector2 playerExtents = playerTransform.GetComponent<Collider2D>().bounds.extents;
-
-            realWidth = playerExtents.x;
-            realHeight = playerExtents.y;
-            width = realWidth + offset;
-            height = realHeight + offset * 2;
-            length = 0.05f;
-        }
-
-        public void setWallMask(LayerMask wallMask)
-        {
-            this.wallMask = wallMask;
-        }
-
-        //Returns whether or not player is touching ground.
-        public bool isGround()
-        {
-            bool bottom1 = Physics2D.Raycast(new Vector2(playerTransform.position.x, playerTransform.position.y - height), Vector2.down, length, wallMask);
-            bool bottom2 = Physics2D.Raycast(new Vector2(playerTransform.position.x + realWidth, playerTransform.position.y - height), Vector2.down, length, wallMask);
-            bool bottom3 = Physics2D.Raycast(new Vector2(playerTransform.position.x - realWidth, playerTransform.position.y - height), Vector2.down, length, wallMask);
-            if (bottom1 || bottom2 || bottom3)
-                return true;
-            else
-                return false;
-        }
-
-        //Returns direction of wall.
-        public int wallDirection()
-        {
-            bool left1 = Physics2D.Raycast(new Vector2(playerTransform.position.x - width, playerTransform.position.y), Vector2.left, length, wallMask);
-            bool left2 = Physics2D.Raycast(new Vector2(playerTransform.position.x - width, playerTransform.position.y + realHeight), Vector2.left, length, wallMask);
-            bool left3 = Physics2D.Raycast(new Vector2(playerTransform.position.x - width, playerTransform.position.y - realHeight), Vector2.left, length, wallMask);
-            bool right1 = Physics2D.Raycast(new Vector2(playerTransform.position.x + width, playerTransform.position.y), Vector2.right, length, wallMask);
-            bool right2 = Physics2D.Raycast(new Vector2(playerTransform.position.x + width, playerTransform.position.y + realHeight), Vector2.right, length, wallMask);
-            bool right3 = Physics2D.Raycast(new Vector2(playerTransform.position.x + width, playerTransform.position.y - realHeight), Vector2.right, length, wallMask);
-
-            if (left1 || left2 || left3)
-                return -1;
-            else if (right1 || right2 || right3)
-                return 1;
-            else
-                return 0;
-        }
-    }
-
     [Header("Movement Settings")]
     [SerializeField]
     private float m_speed = 14f;   //Walking Speed of Player
@@ -123,10 +57,11 @@ public class PlayerController : MonoBehaviour
     [Header("Other")]
     [SerializeField]
     private SpriteRenderer m_sprite = null;
+    [SerializeField]
+    private ParticleSystem m_particleSystem = null;
 
     private Animator m_playerAnimator;
 
-    private GroundState m_groundState;
     public Rigidbody2D m_rb;
     private Vector2 m_input;
     private bool m_jumping; //True if the player is olding the Jump button
@@ -152,7 +87,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        m_groundState = new GroundState(transform, m_offset, m_layermask);
         m_rb = GetComponent<Rigidbody2D>();
         m_playerAnimator = GetComponent<Animator>();
     }
@@ -201,7 +135,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        int wallDir = m_groundState.wallDirection(); //Direction of the wall: 1 is right and -1 is left
         bool grounded = isGrounded(); 
         //bool walled = (wallDir != 0); //True if the player is touching a wall
 
