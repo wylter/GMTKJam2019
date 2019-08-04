@@ -258,8 +258,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   m_headSprite: {fileID: 671248774}
-  m_jumpClip: {fileID: 8300000, guid: b15de505358cac447be070a8364013fd, type: 3}
-  m_bounceClip: {fileID: 8300000, guid: 327f9030fccad414b997cd1b3ca6ce2b, type: 3}
+  m_jumpClip: {fileID: 8300000, guid: 5d99286c29b70044fa09a4afabb3f503, type: 3}
+  m_bounceClip: {fileID: 8300000, guid: 7e2e5384de2386040911d0e138dc5bc3, type: 3}
   m_sprite: {fileID: 1202388748}
   m_particleSystemSpawn: {fileID: 1426120970}
   m_particleSystem: {fileID: 6740685078913465515, guid: c10d1489991267f41b6d45815f42a4fc,

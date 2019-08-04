@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e869ea30ce4b1e942b3e1ea76e083b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_audioMixer: {fileID: 24100000, guid: 3f859327038a01f4aab058fd2f11f173, type: 2}
+  m_audioMixer: {fileID: 0}
   m_efxSource: {fileID: 7966096095794009563}
   m_musicSource: {fileID: 1413504959}
   m_lowPitchRange: 0.93
   m_highPitchRange: 1.07
-  m_firstSongClip: {fileID: 0}
+  m_firstSongClip: {fileID: 8300000, guid: f4ae8f1d5c85a4d45aee4226c6bf5d5f, type: 3}
 --- !u!82 &7966096095794009563
 AudioSource:
   m_ObjectHideFlags: 0
@@ -295,8 +295,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentSpawnPosition: {fileID: 0}
   overlapNum: 0
   m_respawnList: []
   m_debugMode: 1
-  m_selectedLevel: 0
+  m_selectedLevel: 11
