@@ -41,8 +41,6 @@ public class PlayerController : MonoBehaviour
 
     [Space]
     [Header("Collision Settings")]
-    [SerializeField]
-    private float m_offset = 0.1f; //Offset per cercare un muro in GroundState
     [Space]
     [SerializeField]
     private LayerMask m_layermask = 0;
@@ -57,6 +55,8 @@ public class PlayerController : MonoBehaviour
     [Header("Other")]
     [SerializeField]
     private SpriteRenderer m_sprite = null;
+    [SerializeField]
+    private Transform m_particleSystemSpawn = null;
     [SerializeField]
     private ParticleSystem m_particleSystem = null;
 
@@ -227,6 +227,14 @@ public class PlayerController : MonoBehaviour
             m_playerAnimator.SetBool("Jumping", true);
             m_playerAnimator.SetTrigger("Jump");
             SoundController.instance.PlaySingle(m_jumpClip);
+
+           ParticleSystem instance = Instantiate(m_particleSystem, m_particleSystemSpawn.position, m_particleSystemSpawn.rotation);
+           if (m_rb.velocity.x < -0.2f)
+           {
+                var shape = instance.shape;
+                shape.rotation = new Vector3(shape.rotation.x - 90f, shape.rotation.y, shape.rotation.z);
+           }
+            Destroy(instance, 1f);
         }
         if (!m_bouncing && Input.GetButtonUp("Jump"))
         {
