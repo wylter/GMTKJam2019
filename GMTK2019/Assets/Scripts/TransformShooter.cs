@@ -11,6 +11,13 @@ public class TransformShooter : MonoBehaviour
 
     private float m_lastTime;
 
+    private void Start()
+    {
+        m_lastTime = Time.time;
+        GameObject instance = Instantiate(m_prefab, transform.position, transform.rotation);
+        instance.transform.parent = transform;
+    }
+
     private void Update()
     {
         if (Time.time > m_lastTime + m_spawnTime)

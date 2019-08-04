@@ -162,6 +162,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1426120969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1426120970}
+  m_Layer: 8
+  m_Name: ParticlesSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1426120970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426120969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4597874921758160572}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4597874921758160574
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +225,7 @@ Transform:
   m_Children:
   - {fileID: 671248773}
   - {fileID: 1202388747}
+  - {fileID: 1426120970}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -223,7 +254,6 @@ MonoBehaviour:
   m_gravitySpeedTrashhold: -0.05
   m_friction: 1.75
   m_walledDeceleration: 0.3
-  m_offset: 0.2
   m_layermask:
     serializedVersion: 2
     m_Bits: 512
@@ -231,6 +261,9 @@ MonoBehaviour:
   m_jumpClip: {fileID: 8300000, guid: b15de505358cac447be070a8364013fd, type: 3}
   m_bounceClip: {fileID: 8300000, guid: 327f9030fccad414b997cd1b3ca6ce2b, type: 3}
   m_sprite: {fileID: 1202388748}
+  m_particleSystemSpawn: {fileID: 1426120970}
+  m_particleSystem: {fileID: 6740685078913465515, guid: c10d1489991267f41b6d45815f42a4fc,
+    type: 3}
   m_rb: {fileID: 0}
 --- !u!50 &4597874921758160570
 Rigidbody2D:
