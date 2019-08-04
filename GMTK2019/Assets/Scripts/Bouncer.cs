@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bouncer : MonoBehaviour
 {
+
+    [SerializeField]
+    private Animator m_animator = null;
 //     private void OnCollisionEnter2D(Collision2D collision)
 //     {
 //         if (collision.gameObject.CompareTag("Player"))
@@ -17,6 +20,7 @@ public class Bouncer : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             GameController.instance.player.Bounce();
+            m_animator.SetTrigger("Bounce");
         }
     }
 }
